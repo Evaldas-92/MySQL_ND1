@@ -1,0 +1,25 @@
+a)
+CREATE TABLE Genres (bookId INT, Genre varchar(255), UNIQUE KEY (bookId, genre));
+
+b)
+CREATE TABLE Authors_Books (bookId INT, authorId INT, UNIQUE KEY (bookId, authorId));
+
+c)
+INSERT Genres (bookId, genre) VALUES (1, 'Science'), (2, 'Science'), (3, 'Science'), (4, 'Science'), (5, 'Science'), (6, 'Science'), (7, 'Science'), (8, 'Science'), (9, 'Science');
+
+INSERT Authors_Books (bookId, authorId) VALUES (1, 8), (2, 2), (3, 4), (4, 6), (5, 7), (9, 10), (10, 9), (11, 8), (12, 11), (13, 12);
+
+ALTER TABLE Books DROP COLUMN authorId;
+
+d)
+SELECT Books.bookId, Books.title, Books.year, GROUP_CONCAT(Authors_Books.authorId) AS authors FROM Books LEFT JOIN Authors_Books ON Books.bookId = Authors_Books.bookId GROUP BY Books.bookId;
+
+e)
+ALTER TABLE Books CONVERT TO CHARACTER SET utf8;
+
+
+
+
+
+
+

@@ -1,0 +1,31 @@
+a)
+INSERT INTO Authors (name) VALUES (Jonas Jonaitis);
+
+b)
+INSERT INTO Books (authorId, title, year) VALUES (11, 'MySQL Basics', 1998);
+
+c)
+SELECT bookId, Books.authorId, title, year, Authors.name FROM Books LEFT JOIN Authors ON Books.authorId = Authors.authorId;
+
+d)
+UPDATE Books SET authorId = 8 WHERE authorId = 1;
+
+e) (su autoriais, kurie neturi knygų)
+SELECT Authors.authorId, Authors.name, COUNT(Books.authorId) as kiekis FROM Authors LEFT JOIN Books ON Authors.authorId = Books.authorId GROUP BY Authors.authorId, Authors.name;
+
+(be autorių, kurie neturi knygų)
+SELECT Authors.authorId, Authors.name, COUNT(Books.authorId) as kiekis FROM Authors LEFT JOIN Books ON Authors.authorId = Books.authorId GROUP BY Authors.authorId, Authors.name HAVING kiekis > 0;
+
+f)
+DELETE FROM Authors WHERE authorId = 13;
+
+g)
+DELETE FROM Books WHERE authorId IS NULL;
+
+
+
+
+
+
+
+

@@ -1,0 +1,13 @@
+1.
+
+SELECT MONTHNAME(dateTime) as Month, COUNT(DISTINCT userId) as Unique_users FROM UserClicks WHERE YEAR(dateTime) = YEAR(CURDATE()) GROUP BY MONTHNAME(dateTime);
+
+2.
+
+SELECT clientId, birthDate, TIMESTAMPDIFF(YEAR,birthDate,CURDATE()) as Age FROM Clients WHERE DATE_FORMAT(birthDate,'%m-%d') = DATE_FORMAT(NOW(),'%m-%d');
+
+3.
+
+SELECT News.newsId, News.text AS News_text, News.date as News_date, Comments.commentId, Comments.text as Comment_text, Comments.date as Comment_date FROM News LEFT JOIN Comments ON News.newsId = Comments.newsId WHERE Comments.date = (SELECT max(date) FROM Comments WHERE newsId = News.newsId) ORDER BY News.date DESC LIMIT 10;
+
+
